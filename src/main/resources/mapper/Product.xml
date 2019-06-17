@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- DOCTYPE의 mapper는 root tag의 이름을 알려줌 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.hs.dgsw.baejunjae.shoppingmall_back.domain.ProductMapper">
+
+    <select id="findAll" resultType="HashMap">
+        select p.id, product_name, price, ct.category_name as category, c.company_name
+        from product p
+                 join company c on p.company = c.id
+                 join category ct on p.category = ct.id
+    </select>
+    <insert id="add" parameterType="kr.hs.dgsw.baejunjae.shoppingmall_back.domain.Product">
+        insert into product(product_name, price, company)
+        values(#{productName}, #{price}, #{company})
+        <selectKey keyProperty="id" resultType="Long">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <update id="modify" parameterType="kr.hs.dgsw.baejunjae.shoppingmall_back.domain.Product">
+        update product
+        set product_name=#{productName},
+            price=#{price},
+            company=#{company}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="Long">
+        delete
+        from product
+        where id = #{id}
+    </delete>
+
+    <select id="findById" parameterType="Long"
+            resultType="HashMap">
+        select p.id, product_name, price, ct.category_name as category, c.company_name
+        from product p
+                 join company c on p.company = c.id
+                 join category ct on p.category = ct.id
+        where p.id = #{id}
+    </select>
+
+
+</mapper>
