@@ -19,6 +19,17 @@ create table user
 ) engine = InnoDB
   default charset = utf8;
 
+# 장바구니 테이블
+create table cart
+(
+  id      bigint primary key auto_increment,
+  user    bigint NOT NULL,
+  product bigint not null,
+  count   int,
+  created datetime default current_timestamp
+) engine = InnoDB
+  default charset = utf8;
+
 create table product
 (
   id              bigint primary key auto_increment,
@@ -29,6 +40,16 @@ create table product
   company         bigint       not null,
   created         datetime default current_timestamp,
   updated         datetime default current_timestamp on update current_timestamp
+) engine = InnoDB
+  default charset = utf8mb4;
+
+create table review
+(
+  id             bigint primary key auto_increment,
+  user           bigint       not null,
+  product        bigint       not null,
+  review_content varchar(255) not null,
+  created        datetime default current_timestamp
 ) engine = InnoDB
   default charset = utf8mb4;
 
@@ -43,14 +64,26 @@ create table company
 
 create table category
 (
-  id            bigint primary key auto_increment,
+  id            bigint primary key,
   category_name varchar(100) not null
 ) engine = InnoDB
   default charset = utf8mb4;
 
+# 마일리지 테이블
 create table mileage
 (
   user  bigint not null,
   point int default 0
+) engine = InnoDB
+  default charset = utf8mb4;
+
+create table order
+(
+  id      bigint primary key auto_increment,
+  user    bigint not null,
+  product bigint not null,
+  count   int      default 1,
+  state   bigint, # 배송준비, 배송 중, 배송 완료
+  created datetime default current_timestamp
 ) engine = InnoDB
   default charset = utf8mb4;
