@@ -3,6 +3,10 @@ use web02shoppingmall;
 drop table if exists user;
 drop table if exists product;
 drop table if exists company;
+drop table if exists review;
+drop table if exists mileage;
+drop table if exists category;
+drop table if exists productOrder;
 
 create table user
 (
@@ -10,7 +14,8 @@ create table user
   account      varchar(100) not null unique,
   password     varchar(100) not null,
   username     varchar(30)  not null,
-  phone_number varchar(30)  not null,
+  phone_number varchar(30),
+  mobile_phone varchar(30)  not null,
   zip_code     varchar(10)  not null,
   address      varchar(100) not null,
   email        varchar(50)  not null unique,
@@ -77,13 +82,13 @@ create table mileage
 ) engine = InnoDB
   default charset = utf8mb4;
 
-create table order
+create table productOrder
 (
   id      bigint primary key auto_increment,
   user    bigint not null,
   product bigint not null,
   count   int      default 1,
-  state   bigint, # 배송준비, 배송 중, 배송 완료
+  state   bigint,
   created datetime default current_timestamp
 ) engine = InnoDB
   default charset = utf8mb4;

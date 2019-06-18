@@ -10,8 +10,8 @@
                  join category ct on p.category = ct.id
     </select>
     <insert id="add" parameterType="kr.hs.dgsw.baejunjae.shoppingmall_back.domain.Product">
-        insert into product(product_name, price, company)
-        values(#{productName}, #{price}, #{company})
+        insert into product(product_name, price, company, category, product_content)
+        values(#{productName}, #{price}, #{company}, #{category}, #{productContent})
         <selectKey keyProperty="id" resultType="Long">
             select last_insert_id()
         </selectKey>
