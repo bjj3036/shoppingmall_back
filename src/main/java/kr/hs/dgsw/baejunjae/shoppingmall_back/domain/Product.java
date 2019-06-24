@@ -8,6 +8,7 @@ public class Product {
     private Long id;
     private String productName;
     private String productContent;
+    private String productVisual;
     private String category;
     private int price;
     private Long company;
@@ -36,6 +37,14 @@ public class Product {
 
     public void setProductContent(String productContent) {
         this.productContent = productContent;
+    }
+
+    public String getProductVisual() {
+        return productVisual;
+    }
+
+    public void setProductVisual(String productVisual) {
+        this.productVisual = productVisual;
     }
 
     public String getCategory() {

@@ -40,6 +40,7 @@ create table product
   id              bigint primary key auto_increment,
   product_name    varchar(100) not null,
   product_content varchar(255) not null,
+  product_visual  varchar(100),
   category        bigint       not null,
   price           int unsigned not null,
   company         bigint       not null,
