@@ -1,10 +1,8 @@
 package kr.hs.dgsw.baejunjae.shoppingmall_back.controller;
 
 import kr.hs.dgsw.baejunjae.shoppingmall_back.domain.User;
-import kr.hs.dgsw.baejunjae.shoppingmall_back.domain.UserMapper;
 import kr.hs.dgsw.baejunjae.shoppingmall_back.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

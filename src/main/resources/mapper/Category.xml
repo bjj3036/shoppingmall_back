@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- DOCTYPE의 mapper는 root tag의 이름을 알려줌 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.hs.dgsw.baejunjae.shoppingmall_back.domain.CategoryMapper">
+
+    <select id="getCategories" resultType="HashMap">
+        select *
+        from category
+    </select>
+    <select id="getCategory" parameterType="Long" resultType="kr.hs.dgsw.baejunjae.shoppingmall_back.domain.Category">
+        select *
+        from category
+        where id = #{id}
+    </select>
+
+
+</mapper>
